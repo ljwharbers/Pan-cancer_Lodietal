@@ -12,6 +12,6 @@ Besides being able to examine expression of individual genes or customized gene 
 # Contacts
 All other relevant data and analysis are available from the authors upon request. For further enquires, please either raise an issue via GitHub or email Bram Boeckx (bram.boeckx@kuleuven.be), Diether Lambrechts (diether.lambrechts@kuleuven.be) or Francesca Lodi (francesca.lodi@kuleuven.be). 
 
-## List of scripts 
+# List of scripts 
 1) Heatmap showing the (scaled) expression of curated gene signatures (columns) across subclusters (rows)
 2) Box plots displaying the fractions of major cell types detected across cancer types
