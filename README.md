@@ -1,4 +1,4 @@
-# Pan-cancer_Lodi-et-al
+# Pan-cancer_Lodietal
 This repository contains code related to data processing and downstream analysis associated with the study "A pan-cancer dissection of the tumor immune microenvironment transcriptomic landscape", under submission at Cell Reports Medicine.
 
 # Data Availability 
