@@ -1454,12 +1454,13 @@ shinyServer(function(input, output, session) {
                          create = TRUE, persist = TRUE, render = I(optCrt)))
   #### added
   updateSelectizeInput(session, "sc1bb2inp", choices = names(sc1gene), server = TRUE,
-                       selected = sc1def$gene1, options = list(
+                       selected = character(0), options = list(
                          maxOptions = 7, create = TRUE, persist = TRUE, render = I(optCrt)))
 
   ### Plots for tab a1
   output$sc1a1sub1.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1a1sub1]$fID, "\\|")[[1]]
+    if(input$sc1a1sub1 == "BiopsySite") sub = c("Metastasis", "Normal")
     checkboxGroupInput("sc1a1sub2", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
@@ -1547,17 +1548,17 @@ shinyServer(function(input, output, session) {
 
   ### Plots for tab a2
   output$sc1a2sub1.ui =  renderUI({
-    sub = strsplit(sc1conf[UI == input$sc1a2sub1]$fID, "\\|")[[1]]
+    sub = strsplit(sc1conf[UI == input$sc1a2sub1all]$fID, "\\|")[[1]]
     checkboxGroupInput("sc1a2sub2", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1a2sub1non, {
-    sub = strsplit(sc1conf[UI == input$sc1a2sub1]$fID, "\\|")[[1]]
+    sub = strsplit(sc1conf[UI == input$sc1a2sub1all]$fID, "\\|")[[1]]
     updateCheckboxGroupInput(session, inputId = "sc1a2sub2", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1a2sub1all, {
-    sub = strsplit(sc1conf[UI == input$sc1a2sub1]$fID, "\\|")[[1]]
+    sub = strsplit(sc1conf[UI == input$sc1a2sub1all]$fID, "\\|")[[1]]
     updateCheckboxGroupInput(session, inputId = "sc1a2sub2", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
@@ -1625,16 +1626,19 @@ shinyServer(function(input, output, session) {
   ### Plots for tab a3
   output$sc1a3sub1.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1a3sub1]$fID, "\\|")[[1]]
+    if(input$sc1a3sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1a3sub2", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1a3sub1non, {
     sub = strsplit(sc1conf[UI == input$sc1a3sub1]$fID, "\\|")[[1]]
+    if(input$sc1a3sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1a3sub2", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1a3sub1all, {
     sub = strsplit(sc1conf[UI == input$sc1a3sub1]$fID, "\\|")[[1]]
+    if(input$sc1a3sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1a3sub2", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
@@ -1675,16 +1679,20 @@ shinyServer(function(input, output, session) {
   ### Plots for tab b2
   output$sc1b2sub1.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1b2sub1]$fID, "\\|")[[1]]
+    if(input$sc1b2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1b2sub2", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1b2sub1non, {
     sub = strsplit(sc1conf[UI == input$sc1b2sub1]$fID, "\\|")[[1]]
+    if(input$sc1b2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1b2sub2", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1b2sub1all, {
     sub = strsplit(sc1conf[UI == input$sc1b2sub1]$fID, "\\|")[[1]]
+    if(input$sc1b2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
+
     updateCheckboxGroupInput(session, inputId = "sc1b2sub2", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
@@ -1752,16 +1760,20 @@ shinyServer(function(input, output, session) {
   ### Plots for tab c1
   output$sc1c1sub1.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1c1sub1]$fID, "\\|")[[1]]
+    if(input$sc1c1sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
+
     checkboxGroupInput("sc1c1sub2", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1c1sub1non, {
     sub = strsplit(sc1conf[UI == input$sc1c1sub1]$fID, "\\|")[[1]]
+    if(input$sc1c1sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1c1sub2", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1c1sub1all, {
     sub = strsplit(sc1conf[UI == input$sc1c1sub1]$fID, "\\|")[[1]]
+    if(input$sc1c1sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1c1sub2", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
@@ -1769,16 +1781,19 @@ shinyServer(function(input, output, session) {
   #### New toggle to allow select from multiple
   output$sc1c1sub3.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1c1sub3]$fID, "\\|")[[1]]
+    if(input$sc1c1sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1c1sub4", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1c1sub3non, {
     sub = strsplit(sc1conf[UI == input$sc1c1sub3]$fID, "\\|")[[1]]
+    if(input$sc1c1sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1c1sub4", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1c1sub3all, {
     sub = strsplit(sc1conf[UI == input$sc1c1sub3]$fID, "\\|")[[1]]
+    if(input$sc1c1sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1c1sub4", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
@@ -1818,32 +1833,38 @@ shinyServer(function(input, output, session) {
   ### Plots for tab c2
   output$sc1c2sub1.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1c2sub1]$fID, "\\|")[[1]]
+    if(input$sc1c2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1c2sub2", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1c2sub1non, {
     sub = strsplit(sc1conf[UI == input$sc1c2sub1]$fID, "\\|")[[1]]
+    if(input$sc1c2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1c2sub2", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1c2sub1all, {
     sub = strsplit(sc1conf[UI == input$sc1c2sub1]$fID, "\\|")[[1]]
+    if(input$sc1c2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1c2sub2", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
   #### New tab to allow select from multiple
   output$sc1c2sub3.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1c2sub3]$fID, "\\|")[[1]]
+    if(input$sc1c2sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1c2sub4", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1c2sub3non, {
     sub = strsplit(sc1conf[UI == input$sc1c2sub3]$fID, "\\|")[[1]]
+    if(input$sc1c2sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1c2sub4", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1c2sub3all, {
     sub = strsplit(sc1conf[UI == input$sc1c2sub3]$fID, "\\|")[[1]]
+    if(input$sc1c2sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1c2sub4", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
@@ -1890,11 +1911,13 @@ shinyServer(function(input, output, session) {
 
   output$sc1d1sub1.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1d1sub1]$fID, "\\|")[[1]]
+    if(input$sc1d1sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1d1sub2", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1d1sub1non, {
     sub = strsplit(sc1conf[UI == input$sc1d1sub1]$fID, "\\|")[[1]]
+    if(input$sc1d1sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1d1sub2", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
@@ -1906,16 +1929,19 @@ shinyServer(function(input, output, session) {
   ### New toggle
   output$sc1d1sub3.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1d1sub3]$fID, "\\|")[[1]]
+    if(input$sc1d1sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1d1sub4", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1d1sub3non, {
     sub = strsplit(sc1conf[UI == input$sc1d1sub3]$fID, "\\|")[[1]]
+    if(input$sc1d1sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1d1sub4", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1d1sub3all, {
     sub = strsplit(sc1conf[UI == input$sc1d1sub3]$fID, "\\|")[[1]]
+    if(input$sc1d1sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1d1sub4", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
@@ -1976,32 +2002,38 @@ shinyServer(function(input, output, session) {
 
   output$sc1d2sub1.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1d2sub1]$fID, "\\|")[[1]]
+    if(input$sc1d2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1d2sub2", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1d2sub1non, {
     sub = strsplit(sc1conf[UI == input$sc1d2sub1]$fID, "\\|")[[1]]
+    if(input$sc1d2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1d2sub2", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1d2sub1all, {
     sub = strsplit(sc1conf[UI == input$sc1d2sub1]$fID, "\\|")[[1]]
+    if(input$sc1d2sub1 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1d2sub2", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
   ## New toggle
   output$sc1d2sub3.ui =  renderUI({
     sub = strsplit(sc1conf[UI == input$sc1d2sub3]$fID, "\\|")[[1]]
+    if(input$sc1d2sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     checkboxGroupInput("sc1d2sub4", "Select which cells to show", inline = TRUE,
                        choices = sub, selected = sub)
   })
   observeEvent(input$sc1d2sub3non, {
     sub = strsplit(sc1conf[UI == input$sc1d2sub3]$fID, "\\|")[[1]]
+    if(input$sc1d2sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1d2sub4", label = "Select which cells to show",
                              choices = sub, selected = NULL, inline = TRUE)
   })
   observeEvent(input$sc1d2sub3all, {
     sub = strsplit(sc1conf[UI == input$sc1d2sub3]$fID, "\\|")[[1]]
+    if(input$sc1d2sub3 == "BiopsySite") sub = c("Tumor", "Metastasis")
     updateCheckboxGroupInput(session, inputId = "sc1d2sub4", label = "Select which cells to show",
                              choices = sub, selected = sub, inline = TRUE)
   })
