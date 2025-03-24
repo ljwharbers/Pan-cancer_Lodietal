@@ -14,6 +14,12 @@ msigdbr_list
 # Mesenchymal_like_genes <- c('AA',"BB")
 ### Start server code
 shinyUI(fluidPage(
+  tags$style(HTML("
+      #a4image {
+        width: 297mm;
+        height: 420mm;
+      }
+    ")),
   ### HTML formatting of error messages
 
   tags$head(tags$style(HTML(".shiny-output-error-validation {color: red; font-weight: bold;}"))),
@@ -601,8 +607,23 @@ shinyUI(fluidPage(
                                 min = 4, max = 20, value = 14, step = 0.5))
         )  # End of column (6 space)
       )    # End of fluidRow (4 space)
-    )      # End of tab (2 space)
-    ,
+    ),      # End of tab (2 space)
+    tabPanel(
+      "Single-Cell Profiling",
+      fluidPage(
+        h5(HTML("To provide a detailed overview of T-cell subclustering, we present key insights into both marker gene expression, functional gene annotation, and distribution
+across cancer types. The visualizations below highlight these aspects at the single-cell level.<br><br>
+The heatmap displays the normalized expression of five representative marker genes across T-cell subclusters, grouped into CD4+ T-cells (left), CD8+ T-cells (center), and other T-cell populations (right).<br><br>
+The dot plot further explores functional gene expression across T/NK-cell subclusters. Dot size represents the proportion of cells expressing each gene, while
+color intensity reflects the average expression level, providing insight into the functional heterogeneity of these immune cell populations.<br><br>
+The pie chart illustrates the distribution of T/NK-cell subclusters across different cancer types, highlighting shared and distinct immune compositions among
+them.<br><br>
+The box plots depict the cell fractions (% of T/NK-cells) for each subcluster across various cancer types. Cell fractions were computed per sample, including only
+samples with more than 500 cells (n=160, see Methods), providing a comparative view of subcluster prevalence across cancer types.")),
+        br(),
+        HTML('<center><img src="Tcells_shinyapp.png" width="1000"></center>'),
+      )
+    ),
 
     ##################################
     br(),
@@ -611,6 +632,3 @@ shinyUI(fluidPage(
                                                             href = "https://github.com/SGDDNB/ShinyCell",target="_blank"), " as base code."),
     br(),br(),br(),br(),br()
   )))
-
-
-
