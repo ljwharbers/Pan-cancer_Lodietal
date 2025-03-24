@@ -10,4 +10,4 @@ We created interactive and publicly available Shiny Apps designed to provide the
 Besides being able to examine expression of individual genes or customized gene signatures in each cell type across cancer types, these apps allow us to rank individual tumors based on a gene signature in any given cell type and correlate subcluster abundance with this rank.
 
 # Contacts
-All other relevant data and analysis are available from the authors upon request. For further enquires, please either raise an issue via GitHub or email Bram Boeckx (bram.boeckx@kuleuven.be), Diether Lambrechts (diether.lambrechts@kuleuven.be) or Francesca Lodi (francesca.lodi@kuleuven.be). 
+All other relevant data and analysis are available from the authors upon request. For further enquires, please either raise an issue via GitHub or email Diether Lambrechts (diether.lambrechts@kuleuven.be). 
