@@ -14,6 +14,12 @@ msigdbr_list
 # Mesenchymal_like_genes <- c('AA',"BB")
 ### Start server code
 shinyUI(fluidPage(
+  tags$style(HTML("
+    #a4image {
+      width: 297mm;
+      height: 420mm;
+    }
+  ")),
   ### HTML formatting of error messages
 
   tags$head(tags$style(HTML(".shiny-output-error-validation {color: red; font-weight: bold;}"))),
@@ -600,8 +606,24 @@ shinyUI(fluidPage(
                                 min = 4, max = 20, value = 14, step = 0.5))
         )  # End of column (6 space)
       )    # End of fluidRow (4 space)
-    )      # End of tab (2 space)
-    ,
+    ),      # End of tab (2 space)
+    tabPanel(
+      "Single-Cell Profiling",
+      fluidPage(
+        h5(HTML("To provide a detailed overview of dendritic cell (DC) subclustering, we present key insights into their marker gene expression, functional gene annotation, and
+distribution across cancer types. The visualizations below highlight these aspects at the single-cell level.<br><br>
+The heatmap displays the normalized expression of marker genes across DC subclusters, allowing for the distinction of different DC populations based on their
+characteristic gene expression profiles.<br><br>
+The dot plot presents functional gene expression across the eight DC subclusters. Dot size represents the proportion of cells expressing each gene, while color
+intensity reflects the average expression level, providing insights into the functional diversity of DC populations.<br><br>
+The pie chart illustrates the distribution of the eight DC subclusters across different cancer types, highlighting shared and distinct immune compositions.<br><br>
+The box plots depict the cell fractions (% of DCs) for each subcluster across various cancer types. Cell fractions were computed per sample, including only
+samples with more than 500 cells and at least 10 DCs (n=132, see Methods), enabling a comparative assessment of DC subcluster prevalence across cancer
+types.")),
+        br(),
+        HTML('<center><img src="DC_shinyapp.png" width="1000"></center>'),
+      )
+    ),
 
     ##################################
     br(),

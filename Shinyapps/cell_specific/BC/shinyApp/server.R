@@ -1778,14 +1778,4 @@ shinyServer(function(input, output, session) {
       file, device = "png", height = input$sc1d2oup.h, width = input$sc1d2oup.w,
       plot = last_generated )
     })
-
 })
-
-
-
-
-
-
-
-
-

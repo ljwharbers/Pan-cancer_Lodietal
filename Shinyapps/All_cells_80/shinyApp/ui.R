@@ -36,7 +36,12 @@ jumbotron_modified <- function (header, content, button = TRUE, ...)
 ### Start server code
 shinyUI(fluidPage(
   ### HTML formatting of error messages
-
+  tags$style(HTML("
+      #a4image {
+        width: 297mm;
+        height: 420mm;
+      }
+    ")),
   tags$head(tags$style(HTML(".shiny-output-error-validation {color: red; font-weight: bold;}"))),
   list(tags$style(HTML(".navbar-default .navbar-nav { font-weight: bold; font-size: 14px; }"))),
 
@@ -45,64 +50,33 @@ shinyUI(fluidPage(
   titlePanel(title=div(img(src="vib_logo.png", height = '50', width = '130'), HTML("Pan-Cancer atlas scRNA-Seq")),windowTitle ="Pan-Cancer atlas" ),
   navbarPage(
     NULL,
-        tabPanel(
+    tabPanel(
       HTML("Home Page"),
       jumbotron_modified("PanCancer Atlas",content="",button = FALSE),
       hr(),
-      # h5("Welcome to our PanCancer shinyApp. The aim of the app is to allow the easy exploration of gene and gene signature expressions throughout different cancer types."),
-      # h5("Due to the large size of our PanCancer atlas and the limitations in processing power of ShinyApps in this app we had to randomly sample 40% of cells from our Atlas. However, we have other dedicated shinyApps with all cells for the following cell types:"),
-      # h5("Note! Here I changed the files so all cells are present (instead of 40%). Problem: to much RAM needed. Fixed?"),
-      tags$style("#project-grid {
-                      display: grid;
-                      grid-template-columns: 600px 1fr;
-                      grid-gap: 10px;
-                      }"),
-      # h4("Exploring the Tumor Microenvironment with Single-Cell RNA Sequencing"),
-      # div(id = "project-grid",
-      #   div(img(src = 'Fig1A_cropped.png', style = 'border-radius: 50%', width = '600')),
-      #   div(
-      #   h5("The tumor microenvironment (TME) plays a crucial role in shaping tumor evolution and determining therapy effectiveness.
-      #   Single-cell RNA sequencing (scRNA-seq) has revolutionized our understanding of the TME by enabling detailed insights at the cellular level.
-      #   While previous studies often focused on a specific cell type and cancer type or combined data from various sources, our approach is distinct.
-      #   We present a comprehensive, uniform pan-cancer scRNA-seq dataset, comprising 683,184 high-quality single-cell transcriptomes from 234 treatment-naïve samples across", tags$b("9 different cancer types"),", all generated in-house to minimize technological variability.
-      #   Within this dataset, we have identified ", tags$b("70 shared subclusters"), " that provide deeper insights into TME heterogeneity.
-      #   ")
-      #   )
-      #   ),
-
-
-      h4("Exploring the Tumor Microenvironment with Single-Cell RNA Sequencing"),
-      h5("
-      The tumor microenvironment (TME) plays a crucial role in shaping tumor evolution and determining therapy effectiveness. Single-cell RNA sequencing (scRNA-seq) has revolutionized our understanding of the TME by enabling detailed insights at the cellular level.
-      While previous studies often focused on a specific cell type and cancer type or combined data from various sources, our approach is distinct.
-      We present a comprehensive, uniform pan-cancer scRNA-seq dataset, comprising 683,184 high-quality single-cell transcriptomes from 234 treatment-naïve samples across",
-      tags$b("9 different cancer types,"), " all generated in-house to minimize technological variability.
-      Within this dataset, we have identified ", tags$b("70 shared subclusters"), " that provide deeper insights into TME heterogeneity.
-      "),
-      img(src = 'Fig1A_cropped.png', width = '500'),
+      h5("Reference: Lodi et al., Cell Rep Med 2025. DOI: xxxxxx"),
       br(),
+      h4("Exploring the tumor microenvironment (TME) with single-cell RNA sequencing (scRNAseq)"),
+      h5("The TME plays a crucial role in shaping tumor evolution and determining therapy effectiveness. ScRNAseq has revolutionized our understanding of the TME by
+enabling detailed insights at the cellular level. While previous studies often focused on a specific cell type and cancer type or combined data from various sources,
+our approach is distinct. We present a comprehensive, uniform pan-cancer scRNAseq dataset, comprising 611,750 high-quality single-cell transcriptomes from
+230 treatment-naïve samples across 9 different cancer types, all generated in-house to minimize technological variability. Within this dataset, we have identified
+70 shared subclusters that provide deeper insights into TME heterogeneity."),
       br(),
-      h4("Welcome to our Pan-Cancer ShinyApps"),
-      h5("These ShinyApps are designed to facilitate the exploration of gene and gene signature expression across 9 cancer types.
-      It allows users to examine individual gene expression, analyze customizable gene signatures, rank tumors,
-      and explore gene expression changes within specific subclusters.
-      Besides this major app where all 70 shared subclusters can be explored simultaneously,
-      we have individual apps for individual cell types.
-      "),
-      h5("Below, you can find links to the ShinyApps for the individual cell types:"),
+
+      HTML('<center><img src="home_images.png" width="1000"></center>'),
+      br(),
       # h5("We have other dedicated shinyApps with all cells for the following cell types:"),
+      h4("Welcome to our pan-cancer Shiny apps!"),
+      h5("These Shiny apps are designed to facilitate the exploration of gene and gene signature expression across 9 cancer types. It allows users to examine individual
+gene expression, analyze customizable gene signatures, rank tumors, and explore gene expression changes within specific subclusters. Besides this major app
+where all 70 shared subclusters can be explored simultaneously, we have individual apps for individual cell types.
+Below, you can find links to the Shiny apps for the individual cell types:"),
       h5("•" ,tcels),
       h5("•" ,bcels),
       h5("•" ,mmcels),
       h5("•" ,dc),
       h5("•" ,ecels),
-      br(),
-      img(src="UMAPs_cropped.png", width = '1200'),
-      br(),
-      br(),
-      br(),
-      br(),
-      h5("Reference: Lodi  et al. 2024, in preparation."),
     ),
 
     ### Tab1.c1: violinplot / boxplot
@@ -612,8 +586,22 @@ shinyUI(fluidPage(
                                 min = 4, max = 20, value = 14, step = 0.5))
         )  # End of column (6 space)
       )    # End of fluidRow (4 space)
-    )      # End of tab (2 space)
-    ,
+    ),      # End of tab (2 space)
+    tabPanel(
+      "Label transfer in public scRNAseq datasets",
+      fluidPage(
+        h5(HTML("To validate our observations, we examined publicly available scRNAseq datasets. We specifically selected studies that used 10X data from unbiasedly dissociated
+tumor samples to ensure proportional representation of each cell type.<br><br>
+In total, we retrieved 4 datasets from breast cancer (BC), 3 from colorectal cancer (CRC), 5 from hepatocellular carcinoma (HCC), and 5 from non-small cell lung
+cancer (NSCLC), encompassing 1,320,145 individual cells across 320 patient samples (BC, n=104; CRC, n=99; HCC, n=47; NSCLC, n=70). The full list of datasets
+used for this analysis can be found in Supplementary Table 4. For each cancer type, cell types were identified through marker gene annotation, while subclusters
+within each cell type were determined by label transfer based on our own pan-cancer atlas.<br><br>
+The heatmap below shows the normalized expression of marker genes for T-cell, B-cell, macrophage/monocyte, and DC subclusters across these publicly available
+datasets.")),
+        br(),
+        HTML('<center><img src="label_transfer_image.png" width="1000"></center>'),
+      )
+    ),
 
     ##################################
     br(),
@@ -622,6 +610,3 @@ shinyUI(fluidPage(
                                                             href = "https://github.com/SGDDNB/ShinyCell",target="_blank"), " as base code."),
     br(),br(),br(),br(),br()
   )))
-
-
-

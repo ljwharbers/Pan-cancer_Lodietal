@@ -14,6 +14,12 @@ msigdbr_list
 # Mesenchymal_like_genes <- c('AA',"BB")
 ### Start server code
 shinyUI(fluidPage(
+  tags$style(HTML("
+    #a4image {
+      width: 297mm;
+      height: 420mm;
+    }
+  ")),
   ### HTML formatting of error messages
 
   tags$head(tags$style(HTML(".shiny-output-error-validation {color: red; font-weight: bold;}"))),
@@ -394,46 +400,8 @@ shinyUI(fluidPage(
               numericInput("sc1a3oup1.w", "PDF / PNG width:", width = "138px",
                            min = 4, max = 20, value = 15, step = 0.5))
         ) # End of column (6 space)
-        # column(
-        #   6,
-        #   fluidRow(
-        #     column(
-        #       4, selectInput("sc1a3inp2", "Type gene name 2:", choices=NULL) %>%
-        #         helper(type = "inline", size = "m", fade = TRUE,
-        #                title = "Gene expression to colour cells by",
-        #                content = c("Select gene to colour cells by gene expression",
-        #                            paste0("- Gene expression are coloured in a ",
-        #                                   "Grey-Blue colour scheme which can be ",
-        #                                   "changed in the plot controls")))
-        #     ),
-        #     column(
-        #       6, br(),
-        #       actionButton("sc1a3tog2", "Right-panel plot controls"),
-        #       conditionalPanel(
-        #         condition = "input.sc1a3tog2 % 2 == 1",
-        #         radioButtons("sc1a3col2", "Colour:",
-        #                      choices = c("Blue-White-Red","Grey-Blue","White-Red", "Blue-Yellow-Red",
-        #                                  "Yellow-Green-Purple","Black-Violet-Yellow"),
-        #                      selected = "White-Red"),
-        #         radioButtons("sc1a3ord2", "Plot order:",
-        #                      choices = c("Max-1st", "Min-1st", "Original", "Random"),
-        #                      selected = "Max-1st", inline = TRUE)
-        #       )
-        #     )
-        #   ),
-        #   fluidRow(column(12, uiOutput("sc1a3oup2.ui"))),
-        #   downloadButton("sc1a3oup2.pdf", "Download PDF"),
-        #   downloadButton("sc1a3oup2.png", "Download PNG"), br(),
-        #   div(style="display:inline-block",
-        #       numericInput("sc1a3oup2.h", "PDF / PNG height:", width = "138px",
-        #                    min = 4, max = 20, value = 6, step = 0.5)),
-        #   div(style="display:inline-block",
-        #       numericInput("sc1a3oup2.w", "PDF / PNG width:", width = "138px",
-        #                    min = 4, max = 20, value = 6, step = 0.5))
-        # )  # End of column (6 space)
       )    # End of fluidRow (4 space)
     ),     # End of tab (2 space)
-
     ### Tab1.b2: Gene coexpression plot
     tabPanel(
       HTML("Gene coexpression (umap)"),
@@ -446,7 +414,7 @@ shinyUI(fluidPage(
               5, selectInput("sc1b2drX", "X-axis:", choices = sc1conf[dimred == TRUE]$UI,
                              selected = sc1def$dimred[1])),
             column(
-              5,selectInput("sc1b2drY", "Y-axis:", choices = sc1conf[dimred == TRUE]$UI,
+              5, selectInput("sc1b2drY", "Y-axis:", choices = sc1conf[dimred == TRUE]$UI,
                             selected = sc1def$dimred[2]))
           )
         ), # End of column (6 space)
@@ -601,17 +569,30 @@ shinyUI(fluidPage(
                                 min = 4, max = 20, value = 14, step = 0.5))
         )  # End of column (6 space)
       )    # End of fluidRow (4 space)
-    )      # End of tab (2 space)
-    ,
+    ),      # End of tab (2 space)
+    tabPanel(
+      "Single-Cell Profiling",
+      fluidPage(
+        h5(HTML("To provide a detailed overview of B-cell subclustering, we present key insights into both marker gene expression and functional gene annotation, as well as
+their distribution across cancer types. The visualizations below highlight these aspects at the single-cell level.<br><br>
+The heatmap displays the normalized expression of marker genes across B-cell subclusters, allowing for a clear distinction between different B-cell populations
+based on their characteristic gene expression profiles.<br><br>
+The dot plot further explores functional gene expression across B-cell subclusters. Dot size represents the proportion of cells expressing each gene, while color
+intensity reflects the average expression level, providing insight into the functional heterogeneity of B-cell populations.<br><br>
+The pie chart illustrates the distribution of B-cell subclusters across different cancer types, highlighting the shared immune composition among them.<br><br>
+The box plots depict the cell fractions (% of B-cells) for each subcluster across various cancer types. Cell fractions were computed per sample, including only
+samples with more than 500 cells and at least 10 B-cells (n=115, see Methods), providing a comparative view of subcluster prevalence across cancer types.")),
+        br(),
+        HTML('<center><img src="Bcells_shinyapp.png" width="1000"></center>'),
+      )
+    ),
     ### New tab gene signature with correlations # Written by Lucas
 
     ##################################
     br(),
     p("", style = "font-size: 125%;"),
     p(em("This webpage was made by Lucas Maciel using "), a("ShinyCell",
-                                                            href = "https://github.com/SGDDNB/ShinyCell",target="_blank"), " as base code."),
-    br(),br(),br(),br(),br()
+                                                            href = "https://github.com/SGDDNB/ShinyCell",
+                                                            target = "_blank"), " as base code."),
+    br(), br(), br(), br(), br()
   )))
-
-
-

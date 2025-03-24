@@ -14,6 +14,12 @@ msigdbr_list
 # Mesenchymal_like_genes <- c('AA',"BB")
 ### Start server code
 shinyUI(fluidPage(
+  tags$style(HTML("
+      #a4image {
+        width: 297mm;
+        height: 420mm;
+      }
+    ")),
   ### HTML formatting of error messages
 
   tags$head(tags$style(HTML(".shiny-output-error-validation {color: red; font-weight: bold;}"))),
@@ -601,8 +607,26 @@ shinyUI(fluidPage(
                                 min = 4, max = 20, value = 14, step = 0.5))
         )  # End of column (6 space)
       )    # End of fluidRow (4 space)
-    )      # End of tab (2 space)
-    ,
+    ),      # End of tab (2 space)
+    tabPanel(
+      "Single-Cell Profiling",
+      fluidPage(
+        h5(HTML("To provide a detailed overview of macrophage and monocyte subclustering, we present key insights into their marker gene expression, functional gene annota-
+tion, and distribution across cancer types. The visualizations below highlight these aspects at the single-cell level.<br><br>
+The heatmap displays the normalized expression of marker genes across macrophage and monocyte subclusters, enabling the distinction of different popula-
+tions based on their characteristic gene expression profiles.<br><br<
+The dot plot provides an in-depth view of functional gene expression within macrophage and monocyte subclusters. It is divided into three sections: macro-
+phage/monocyte marker genes (top), pro- and anti-inflammatory genes (center), and additional functional genes (bottom). Dot size represents the proportion of
+cells expressing each gene, while color intensity reflects the average expression level, offering insights into the immunological roles of these populations.<br><br>
+The pie chart illustrates the distribution of macrophage and monocyte subclusters across different cancer types, highlighting shared and distinct immune compo-
+sitions among them.<br><br>
+The box plots depict the cell fractions (% of macrophages/monocytes) for each subcluster across various cancer types. Cell fractions were computed per
+sample, including only samples with more than 500 cells and at least 20 macrophages/monocytes (n=154, see Methods), allowing for a comparative assessment
+of their prevalence across cancer types.")),
+        br(),
+        HTML('<center><img src="MM_shinyapp.png" width="1000"></center>'),
+      )
+    ),
 
     ##################################
     br(),
