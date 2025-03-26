@@ -1281,7 +1281,7 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1a1oup1", height = pList[input$sc1a1psz]) ,type = "html",loader = "dnaspin")
   })
   output$sc1a1oup1.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a1drX,"_",input$sc1a1drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a1drX,"_",input$sc1a1drY,"_",
                                    input$sc1a1inp1,".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1a1oup1.h, width = input$sc1a1oup1.w, useDingbats = FALSE,
@@ -1291,7 +1291,7 @@ shinyServer(function(input, output, session) {
                       input$sc1a1fsz, input$sc1a1asp, input$sc1a1txt, input$sc1a1lab1) )
     })
   output$sc1a1oup1.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a1drX,"_",input$sc1a1drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a1drX,"_",input$sc1a1drY,"_",
                                    input$sc1a1inp1,".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1a1oup1.h, width = input$sc1a1oup1.w,
@@ -1320,7 +1320,7 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1a1oup2", height = pList[input$sc1a1psz]),type = "html",loader = "dnaspin")
   })
   output$sc1a1oup2.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a1drX,"_",input$sc1a1drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a1drX,"_",input$sc1a1drY,"_",
                                    input$sc1a1inp2,".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1a1oup2.h, width = input$sc1a1oup2.w, useDingbats = FALSE,
@@ -1331,7 +1331,7 @@ shinyServer(function(input, output, session) {
                       input$sc1a1fsz, input$sc1a1asp, input$sc1a1txt) )
     })
   output$sc1a1oup2.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a1drX,"_",input$sc1a1drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a1drX,"_",input$sc1a1drY,"_",
                                    input$sc1a1inp2,".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1a1oup2.h, width = input$sc1a1oup2.w,
@@ -1369,7 +1369,7 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1a2oup1", height = pList[input$sc1a2psz]) ,type = "html",loader = "dnaspin")
   })
   output$sc1a2oup1.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a2drX,"_",input$sc1a2drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a2drX,"_",input$sc1a2drY,"_",
                                    input$sc1a2inp1,".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1a2oup1.h, width = input$sc1a2oup1.w, useDingbats = FALSE,
@@ -1379,7 +1379,7 @@ shinyServer(function(input, output, session) {
                       input$sc1a2fsz, input$sc1a2asp, input$sc1a2txt, input$sc1a2lab1) )
     })
   output$sc1a2oup1.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a2drX,"_",input$sc1a2drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a2drX,"_",input$sc1a2drY,"_",
                                    input$sc1a2inp1,".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1a2oup1.h, width = input$sc1a2oup1.w,
@@ -1399,7 +1399,7 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1a2oup2", height = pList[input$sc1a2psz]) ,type = "html",loader = "dnaspin")
   })
   output$sc1a2oup2.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a2drX,"_",input$sc1a2drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a2drX,"_",input$sc1a2drY,"_",
                                    input$sc1a2inp2,".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1a2oup2.h, width = input$sc1a2oup2.w, useDingbats = FALSE,
@@ -1409,7 +1409,7 @@ shinyServer(function(input, output, session) {
                       input$sc1a2fsz, input$sc1a2asp, input$sc1a2txt, input$sc1a2lab2) )
     })
   output$sc1a2oup2.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a2drX,"_",input$sc1a2drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a2drX,"_",input$sc1a2drY,"_",
                                    input$sc1a2inp2,".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1a2oup2.h, width = input$sc1a2oup2.w,
@@ -1448,7 +1448,7 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1a3oup1", height = pList[input$sc1a3psz]) ,type = "html",loader = "dnaspin")
   })
   output$sc1a3oup1.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a3drX,"_",input$sc1a3drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a3drX,"_",input$sc1a3drY,"_",
                                    paste(input$sc1a3inp1,collapse = "_"),".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1a3oup1.h, width = input$sc1a3oup1.w, useDingbats = FALSE,
@@ -1459,7 +1459,7 @@ shinyServer(function(input, output, session) {
                       isolate(input$sc1a3fsz), isolate(input$sc1a3asp), isolate(input$sc1a3txt)) )
     })
   output$sc1a3oup1.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1a3drX,"_",input$sc1a3drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1a3drX,"_",input$sc1a3drY,"_",
                                    paste(input$sc1a3inp1,collapse = "_"),".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1a3oup1.h, width = input$sc1a3oup1.w,
@@ -1497,7 +1497,7 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1b2oup1", height = pList2[input$sc1b2psz]) ,type = "html",loader = "dnaspin")
   })
   output$sc1b2oup1.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1b2drX,"_",input$sc1b2drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1b2drX,"_",input$sc1b2drY,"_",
                                    input$sc1b2inp1,"_",input$sc1b2inp2,".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1b2oup1.h, width = input$sc1b2oup1.w, useDingbats = FALSE,
@@ -1508,7 +1508,7 @@ shinyServer(function(input, output, session) {
                       input$sc1b2fsz, input$sc1b2asp, input$sc1b2txt) )
     })
   output$sc1b2oup1.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1b2drX,"_",input$sc1b2drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1b2drX,"_",input$sc1b2drY,"_",
                                    input$sc1b2inp1,"_",input$sc1b2inp2,".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1b2oup1.h, width = input$sc1b2oup1.w,
@@ -1525,14 +1525,14 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1b2oup2", height = "300px") ,type = "html",loader = "dnaspin")
   })
   output$sc1b2oup2.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1b2drX,"_",input$sc1b2drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1b2drX,"_",input$sc1b2drY,"_",
                                    input$sc1b2inp1,"_",input$sc1b2inp2,"_leg.pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = 3, width = 4, useDingbats = FALSE,
       plot = scDRcoexLeg(input$sc1b2inp1, input$sc1b2inp2, input$sc1b2col1, input$sc1b2fsz) )
     })
   output$sc1b2oup2.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1b2drX,"_",input$sc1b2drY,"_",
+    filename = function() { paste0("Bcells_",input$sc1b2drX,"_",input$sc1b2drY,"_",
                                    input$sc1b2inp1,"_",input$sc1b2inp2,"_leg.png") },
     content = function(file) { ggsave(
       file, device = "png", height = 3, width = 4,
@@ -1575,7 +1575,7 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1c1oup", height = pList2[input$sc1c1psz]) ,type = "html",loader = "dnaspin")
   })
   output$sc1c1oup.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1c1typ,"_",input$sc1c1inp1,"_",
+    filename = function() { paste0("Bcells_",input$sc1c1typ,"_",input$sc1c1inp1,"_",
                                    paste(input$sc1c1inp2,collapse = "_"),".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1c1oup.h, width = input$sc1c1oup.w, useDingbats = FALSE,
@@ -1585,7 +1585,7 @@ shinyServer(function(input, output, session) {
                       input$sc1c1siz, input$sc1c1fsz) )
     })
   output$sc1c1oup.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1c1typ,"_",input$sc1c1inp1,"_",
+    filename = function() { paste0("Bcells_",input$sc1c1typ,"_",input$sc1c1inp1,"_",
                                    paste(input$sc1c1inp2,collapse = "_"),".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1c1oup.h, width = input$sc1c1oup.w,
@@ -1621,7 +1621,7 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1c2oup", height = pList2[input$sc1c2psz]) ,type = "html",loader = "dnaspin")
   })
   output$sc1c2oup.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1c2typ,"_",input$sc1c2inp1,"_",
+    filename = function() { paste0("Bcells_",input$sc1c2typ,"_",input$sc1c2inp1,"_",
                                    input$sc1c2inp2,".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1c2oup.h, width = input$sc1c2oup.w, useDingbats = FALSE,
@@ -1630,7 +1630,7 @@ shinyServer(function(input, output, session) {
                     input$sc1c2typ, input$sc1c2flp, input$sc1c2fsz) )
     })
   output$sc1c2oup.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1c2typ,"_",input$sc1c2inp1,"_",
+    filename = function() { paste0("Bcells_",input$sc1c2typ,"_",input$sc1c2inp1,"_",
                                    input$sc1c2inp2,".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1c2oup.h, width = input$sc1c2oup.w,
@@ -1699,13 +1699,13 @@ shinyServer(function(input, output, session) {
     withLoader(plotOutput("sc1d1oup", height = pList3[input$sc1d1psz]),type = "html",loader = "dnaspin")
   })
   output$sc1d1oup.pdf <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1d1plt,"_",input$sc1d1grp,".pdf") },
+    filename = function() { paste0("Bcells_",input$sc1d1plt,"_",input$sc1d1grp,".pdf") },
     content = function(file) { ggsave(
       file, device = "pdf", height = input$sc1d1oup.h, width = input$sc1d1oup.w,
       plot = last_generated_bar )
     })
   output$sc1d1oup.png <- downloadHandler(
-    filename = function() { paste0("Tcells_",input$sc1d1plt,"_",input$sc1d1grp,".png") },
+    filename = function() { paste0("Bcells_",input$sc1d1plt,"_",input$sc1d1grp,".png") },
     content = function(file) { ggsave(
       file, device = "png", height = input$sc1d1oup.h, width = input$sc1d1oup.w,
       plot = last_generated_bar )
