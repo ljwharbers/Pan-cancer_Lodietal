@@ -1,0 +1,64 @@
+Intermediatecelltype_annotation,Minorcelltype_annotation
+TC,CD4+ TEM
+TC,NK cyto
+BC,Naive mature
+TC,CD8+ Tγδ
+TC,CD8+ TN
+TC,CD4+ TN
+TC,CD8+ TEM
+TC,CD4+ TH1
+BC,Memory IgM+
+TC,Prolif Tcell
+TC,CD8- Tγδ
+TC,CD4+ TREG
+TC,CD8+ MAIT
+BC,Breg
+TC,CD8+ TEX
+TC,CD8+ TRM
+BC,IgG mature
+MM,LAM1
+TC,NK inflam
+Cancer/epithelial,Cancer/epithelial
+MM,Inflam Mac
+TC,MAIT
+TC,CD8+ TEMRA
+BC,IgA immature
+MM,Interm Mac
+MM,Mono-like Mac
+BC,Memory IgM-
+BC,IgA mature
+DC3,cDC2
+DC3,pDC
+TC,CD4+ TH17
+MM,Classical Mono
+Mast cell,Mast cell
+MM,Non-classical Mono
+Fibroblast,Fibroblast
+MM,Perivasc Mac
+EC,Stalk cells
+EC,Cap
+DC3,mRegDC
+MM,Prolif Mac
+MM,MT Mac
+DC3,DC3
+EC,Tip cells
+MM,Hypoxic Mac
+MM,Immunosuppr Mac
+MM,Mono-like LAM
+EC,Arterial
+EC,PCV
+EC,Venous
+TC,CD4+ TFH
+MM,LAM2
+DC3,Lang-likeDC
+MM,IFN Mac
+EC,Lymphatic
+BC,IgG immature
+DC3,AXL_DC
+DC3,cDC1
+EC,IFN
+DC3,mQuiescDC
+BC,Memory GC-indep
+BC,Plasmablast
+MM,Neutrophils
+EC,Prolif EC
