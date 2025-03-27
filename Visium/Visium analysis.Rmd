@@ -1,0 +1,156 @@
+# annotation of tumor ST data
+```{r quality control}
+Sample <- "NGBC_5"
+OutDir <- paste("../result/01_ST_BC/", Sample, "/", sep = "")
+dir.create(OutDir)
+
+
+# ---- read files
+Xdata <- Seurat::Read10X("../../data/NGBC/CID44971/CID44971_filtered_count_matrix/", gene.column = 1)
+metadata <- read.csv("../../data/NGBC/CID44971/CID44971_metadata.csv")
+head(metadata)
+table(metadata$Classification)
+
+
+# ---- create seurat object
+XF <- CreateSeuratObject(counts = Xdata, project = Sample, assay = "Spatial")
+# read image file
+Ximage <- Read10X_Image("../../data/NGBC/CID44971/CID44971_spatial/")
+Seurat::DefaultAssay(Ximage) <- "Spatial"
+# link matrix and image file
+Ximage <- Ximage[colnames(XF)]
+XF[["image"]] <- Ximage
+TumorST <- XFe
+TumorST$classification <- metadata$Classification[match(colnames(TumorST), metadata[, 1])]
+
+
+# ---- QC
+dir.create(paste(OutDir, "QC", sep = ""))
+TumorST[["Mito.percent"]] <- PercentageFeatureSet(TumorST, pattern = "^MT-")
+
+pdf(paste(OutDir, "QC/Vlnplot.pdf", sep = ""), width = 6, height = 4)
+p <- VlnPlot(TumorST, features = c("nFeature_Spatial", "nCount_Spatial", "Mito.percent"), pt.size = 0, combine = F)
+for (i in 1:length(p)) {
+  p[[i]] <- p[[i]] + NoLegend() + theme(axis.title.x = element_blank(), axis.text.x = element_text(angle = 0))
+}
+p <- cowplot::plot_grid(plotlist = p, ncol = 3)
+print(p)
+dev.off()
+
+pdf(paste(OutDir, "QC/featurplot.pdf", sep = ""), width = 7, height = 7)
+p <- SpatialFeaturePlot(TumorST, features = c("nFeature_Spatial", "nCount_Spatial", "Mito.percent"), combine = F)
+for (i in 1:length(p)) {
+  p[[i]] <- p[[i]] + theme(axis.title.x = element_blank(), axis.text.x = element_text(angle = 0))
+}
+print(cowplot::plot_grid(plotlist = p, ncol = 3))
+dev.off()
+
+
+# ----- save QC result
+QCData <- TumorST@meta.data[, c("nCount_Spatial", "nFeature_Spatial", "Mito.percent")]
+openxlsx::write.xlsx(QCData, paste(OutDir, "QC/QCData.xlsx", sep = ""), overwrite = T)
+
+TumorST[["Spatial"]]
+TumorST[["image"]]
+
+
+# ---- plot with annotation
+pdf(paste(OutDir, Sample, "_tumor_boundary_spatialplot.pdf", sep = ""), width = 6, height = 4)
+SpatialDimPlot(TumorST, group.by = "classification") + scale_fill_brewer(palette = "Paired")
+dev.off()
+
+saveRDS(TumorST, paste(OutDir, Sample, "_BoundaryDefine_PC.rds", sep = ""))
+```
+
+
+
+
+
+# module correlation heatmap
+```{r correlation heatmap}
+TumorST <- readRDS("../../result/01_ST_BC/NGBC_5/NGBC_5_BoundaryDefine_PC.rds")
+
+metadf <- as.data.frame(TumorST@meta.data)
+metadf <- metadf[, grep("mean", colnames(metadf))]
+colnames(metadf)
+
+TLS_corr <- cor(metadf[, colnames(metadf)[grep("mean", colnames(metadf))][c(2:8)]])
+rownames(TLS_corr) <- gsub("mean", "", rownames(TLS_corr))
+colnames(TLS_corr) <- gsub("mean", "", colnames(TLS_corr))
+TLS_pval <- cor.mtest(metadf[, colnames(metadf)[grep("mean", colnames(metadf))][c(2:8)]], conf.level = 0.95)
+TLS_pval <- TLS_pval$p
+rownames(TLS_pval) <- gsub("mean", "", rownames(TLS_pval))
+colnames(TLS_pval) <- gsub("mean", "", colnames(TLS_pval))
+
+Tcell_corr <- cor(metadf[, colnames(metadf)[grep("mean", colnames(metadf))][c(10:20)]])
+rownames(Tcell_corr) <- gsub("mean", "", rownames(Tcell_corr))
+colnames(Tcell_corr) <- gsub("mean", "", colnames(Tcell_corr))
+Tcell_pval <- cor.mtest(metadf[, colnames(metadf)[grep("mean", colnames(metadf))][c(10:20)]], conf.level = 0.95)
+Tcell_pval <- Tcell_pval$p
+rownames(Tcell_pval) <- gsub("mean", "", rownames(Tcell_corr))
+colnames(Tcell_pval) <- gsub("mean", "", colnames(Tcell_corr))
+
+pdf("../../result/01_ST_BC/NGBC_5/NGBC_5_celltype_corr.pdf", width = 6, height = 6)
+corrplot(
+  corr = TLS_corr,
+  method = "square",
+  type = "upper",
+  tl.pos = "lt",
+  tl.col = "black",
+  col = rev(COL2("RdBu", 8)),
+  p.mat = TLS_pval, sig.level = c(0.001, 0.01, 0.05),
+  insig = "label_sig",
+  pch.cex = 0.9, pch.col = "black"
+)
+corrplot(
+  corr = TLS_corr,
+  method = "number",
+  type = "lower",
+  add = TRUE,
+  col = rev(COL2("RdBu", 8)),
+  tl.pos = "n", cl.pos = "n",
+  diag = FALSE
+)
+corrplot(
+  corr = Tcell_corr,
+  method = "square",
+  type = "upper",
+  tl.pos = "lt",
+  tl.col = "black",
+  col = rev(COL2("RdBu", 8)),
+  p.mat = Tcell_pval, sig.level = c(0.001, 0.01, 0.05),
+  insig = "label_sig",
+  pch.cex = 0.9, pch.col = "black"
+)
+corrplot(
+  corr = Tcell_corr,
+  method = "number",
+  type = "lower",
+  add = TRUE,
+  col = rev(COL2("RdBu", 8)),
+  tl.pos = "n", cl.pos = "n",
+  diag = FALSE
+)
+dev.off()
+```
+
+
+
+
+
+# module barplot
+```{r barplot}
+pdf("../../result/module_score_barplot.pdf", height = 8, width = 12)
+print(
+  ggplot(avg_score, aes(x = cancer_type, y = TLS_score, fill = sample)) +
+    geom_bar(
+      stat = "identity",
+      position = position_dodge(0.8),
+      color = "black"
+    ) +
+    labs(x = "Group", y = "Value") +
+    theme_classic() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "none")
+)
+dev.off()
+```
