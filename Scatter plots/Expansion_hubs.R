@@ -33,13 +33,13 @@ level = "Minorcelltype_annotation"
 freq.long <- freq_all_long %>% filter(lev == level)
 freq.long <- freq.long %>% dplyr::filter(SampleID %in% samples)
 
-#### Select cell sucblusters belonging to Type-1 immunity hub
+#### Select cell subtypes belonging to Type-1 immunity hub
 freq.long <- freq.long %>% dplyr::filter(CellType %in%
                                            c("CD4+ TREG", "mRegDC", "Mono-like Mac", "LAM2", "Neutrophils", "AXL_DC", "Inflam Mac", "Lymphatic",
                                              "CD4+ TH1", "CD8+ TEX", "Prolif T"))
 hub <- "Type-1 immunity hub"
 
-### Select cell sucblusters belonging to Type-1 immunity hub TLS-like hub
+### Select cell subtypes belonging to TLS-like hub
 # freq.long <- freq.long %>% dplyr::filter(CellType %in%
 #                                            c("CD4+ TFH", "GC B","Breg", "Plasmablast", "IFN Mac",
 #                                              "IgG mature", "IgG immature", "IgA mature", "IgA immature", "mQuiescDC"))
