@@ -11,7 +11,7 @@ library(tibble)
 dir <- "/path/"
 out_dir <- "/path/"
 
-# For consistency, we created one file containing cell proportions ("Freq_SampleID.csv") and another containing Tcell expansion data in early BC and HNSCC ("meta_object_expansion_only_T_M_noNA.csv"), both calculated at the sample level.
+# For consistency, we created one file containing cell proportions ("freq_all_SampleID_long.csv") and another containing Tcell expansion data in early BC and HNSCC ("meta_object_expansion_only_T_M_noNA.csv"), both calculated at the sample level.
 # Specifically, in the first file, cell proportions are computed at the sample level:
 # * For major cell types, proportions are calculated relative to the total number of cells.
 # * At the cell subtype level, proportions are calculated relative to the sum of cells within the corresponding major cell type.
