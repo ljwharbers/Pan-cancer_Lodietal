@@ -22,7 +22,7 @@ filter_samples = TRUE
 dir <- "/path/"
 out_dir <- "/path/"
 
-# For consistency, we created one file containing cell proportions ("Freq_SampleID.csv") and another containing T-cell reactivity scores ("TcellReactivity_SampleID.csv"), both calculated at the sample level.
+# For consistency, we created one file containing cell proportions ("freq_all_SampleID_long.csv") and another containing T-cell reactivity scores ("TcellReactivity_SampleID.csv"), both calculated at the sample level.
 # Specifically, in the first file, cell proportions are computed at the sample level:
 # * For major cell types, proportions are calculated relative to the total number of cells.
 # * At the cell subtype level, proportions are calculated relative to the sum of cells within the corresponding major cell type.
@@ -39,7 +39,7 @@ out_dir <- "/path/"
 signature_df <- read.csv(paste0(dir, "/master_files/Tcell_Reactivity_SampleID.csv"))
 
 # Read file with cell proportions
-freq_all_long <- read.csv(paste0(dir, "/master_files/Freq_SampleID.csv"))
+freq_all_long <- read.csv(paste0(dir, "/master_files/freq_all_SampleID_long.csv"))
 
 ncells_T_NK <- read.csv(paste0(dir, "/master_files/ncells_T_NK_SampleID.csv"))
 df_ncells_meta_T_NK <- dplyr::full_join(df_ncells_meta, ncells_T_NK)
