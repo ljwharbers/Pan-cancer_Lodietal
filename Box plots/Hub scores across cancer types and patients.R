@@ -6,7 +6,7 @@ library(ggpubr)
 library(forcats)
 library(tibble)
 
-# For consistency, we created one file containing cell proportions ("Freq_SampleID.csv"). Specifically, in the this file, cell proportions are computed at the sample level:
+# For consistency, we created one file containing cell proportions ("freq_all_SampleID_long.csv"). Specifically, in the this file, cell proportions are computed at the sample level:
 # * For major cell types, proportions are calculated relative to the total number of cells.
 # * At the cell subtype level, proportions are calculated relative to the sum of cells within the corresponding major cell type.
 # In addition, we created a file with the metadata of our cells ("metaData_ncells_SampleID.csv), in particular containing the total number of cells per sample. For more details, please refer to the files in the "Master files" folder.
@@ -18,7 +18,7 @@ out_dir <- "/path/"
 
 ### Read data of the above-mentioned files with cell proportion
 # read file with cell proportions
-freq_all_long <- read.csv(paste0(dir, "/Freq_SampleID.csv"))
+freq_all_long <- read.csv(paste0(dir, "/freq_all_SampleID_long.csv"))
 
 ### Read file with metadata 
 df_ncells_meta <- read.csv(paste0(dir, "/metaData_ncells_SampleID.csv"))
