@@ -27,21 +27,21 @@ MM,Interm Mac
 MM,Mono-like Mac
 BC,Memory IgM-
 BC,IgA mature
-DC3,cDC2
-DC3,pDC
+DC,cDC2
+DC,pDC
 TC,CD4+ TH17
 MM,Classical Mono
 Mast cell,Mast cell
 MM,Non-classical Mono
 Fibroblast,Fibroblast
 MM,Perivasc Mac
-EC,Stalk cells
-EC,Cap
-DC3,mRegDC
+EC,Stalk
+EC,Capillary
+DC,mRegDC
 MM,Prolif Mac
 MM,MT Mac
-DC3,DC3
-EC,Tip cells
+DC,DC
+EC,Tip
 MM,Hypoxic Mac
 MM,Immunosuppr Mac
 MM,Mono-like LAM
@@ -50,15 +50,15 @@ EC,PCV
 EC,Venous
 TC,CD4+ TFH
 MM,LAM2
-DC3,Lang-likeDC
+DC,Lang-likeDC
 MM,IFN Mac
 EC,Lymphatic
 BC,IgG immature
-DC3,AXL_DC
-DC3,cDC1
+DC,AXL_DC
+DC,cDC1
 EC,IFN
-DC3,mQuiescDC
-BC,Memory GC-indep
+DC,mQuiescDC
+BC,GC B
 BC,Plasmablast
 MM,Neutrophils
 EC,Prolif EC
