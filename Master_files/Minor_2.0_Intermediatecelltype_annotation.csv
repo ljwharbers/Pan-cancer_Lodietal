@@ -29,8 +29,8 @@ MM,Interm Mac,Interm Mac
 MM,Mono-like Mac,Mono-like Mac
 BC,Memory IgM-,Memory IgM-
 BC,IgA mature,IgA mature
-DC3,cDC2,cDC2
-DC3,pDC,pDC
+DC,cDC2,cDC2
+DC,pDC,pDC
 TC,CD4+ TH17,CD4+ TH17
 MM,Classical Mono,Classical Mono
 Mast cell,Mast cell,Mast cell
@@ -39,11 +39,11 @@ Fibroblast,Fibroblast,Fibroblast
 TC,CD8+ TEX,CCL4+ Tex
 MM,Perivasc Mac,Perivasc Mac
 EC,Stalk,Stalk
-EC,Cap,Cap
-DC3,mRegDC,mRegDC
+EC,Capillary,Capillary
+DC,mRegDC,mRegDC
 MM,Prolif Mac,Prolif Mac
 MM,MT Mac,MT Mac
-DC3,DC3,DC3
+DC,DC,DC
 EC,Tip,Tip
 MM,Hypoxic Mac,Hypoxic Mac
 MM,Suppr Mac,Suppr Mac
@@ -54,16 +54,16 @@ EC,PCV,PCV
 EC,Venous,Venous
 TC,CD4+ TFH,CD4+ TFH
 MM,LAM2,LAM2
-DC3,Lang-likeDC,Lang-likeDC
+DC,Lang-likeDC,Lang-likeDC
 MM,IFN Mac,IFN Mac
 EC,Lymphatic,Lymphatic
 TC,CD4+ TREG,CD8+ CCL5+ Treg
 BC,IgG immature,IgG immature
-DC3,AXL_DC,AXL_DC
-DC3,cDC1,cDC1
+DC,AXL_DC,AXL_DC
+DC,cDC1,cDC1
 EC,IFN EC,IFN EC
 TC,CD8+ TEX,PKM+ Tex
-DC3,mQuiescDC,mQuiescDC
+DC,mQuiescDC,mQuiescDC
 TC,CD8+ TEX,TCF7+ Tex
 BC,GC B,GC B
 BC,Plasmablast,Plasmablast
