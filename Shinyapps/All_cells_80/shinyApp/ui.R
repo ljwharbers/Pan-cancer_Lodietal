@@ -12,6 +12,16 @@ sc1def  = readRDS("sc1def.rds")
 msigdbr_list <- readRDS("hallmarks.rds")
 msigdbr_list
 
+# Rename cells
+# Same for conf
+#sc1conf[8, fID := sc1conf[8, gsub("Prolif Tcell", "Prolif T", sc1conf[8, fID])]]
+#sc1conf[8, fID := sc1conf[8, gsub("Memory GC-indep", "GC B", sc1conf[8, fID])]]
+#sc1conf[8, fID := sc1conf[8, gsub("Immunosuppr Mac", "Suppr Mac", sc1conf[8, fID])]]
+#sc1conf[8, fID := sc1conf[8, gsub("Cap", "Capillary", sc1conf[8, fID])]]
+#sc1conf[8, fID := sc1conf[8, gsub("Tip cells", "Tip", sc1conf[8, fID])]]
+#sc1conf[8, fID := sc1conf[8, gsub("IFN", "IFN EC", sc1conf[8, fID])]]
+#sc1conf[8, fID := sc1conf[8, gsub("Stalk cells", "Stalk", sc1conf[8, fID])]]
+
 tcels <- a("T-cells", href="http://apps.lambrechtslab.sites.vib.be/T-cells/")
 bcels <- a("B-cells", href="http://apps.lambrechtslab.sites.vib.be/B-cells")
 mmcels <- a("Myeloid cells", href="http://apps.lambrechtslab.sites.vib.be/Myeloid-cells")
