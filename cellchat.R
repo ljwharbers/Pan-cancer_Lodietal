@@ -130,23 +130,20 @@ group.cellType <- c('CD4+ TFH'= "T",
                     'IgA mature'= "B",
                     'GC B'= "B",
                     'mQuiescDC'= "DC",
-                    'IFN Mac'= "Mac",
-                    'PCV' = "EC")
+                    'IFN Mac'= "Mac")
 
 # Ensure that all identities in cellchat@idents are covered by the group.cellType vector
 group.cellType <- factor(group.cellType[levels(cellchat@idents)], 
-                         levels = c("T", "B", "Mac", "DC", "EC"))
+                         levels = c("T", "B", "Mac", "DC"))
 
 # Double-check the mapping of group.cellType
 group.cellType
 
 # Define the signaling pathways from: cellchat@netP[["pathways"]]
-signaling_pathways <- c('MIF','MHC-II','APP','CypA','CD99','CXCL','GALECTIN','CD45','COLLAGEN','PECAM1',
-                        'LAMININ','PECAM2','BAFF','CLEC','FN1','ICAM','MK','CCL','ANNEXIN','SELL','MHC-I',
-                        'ApoE','NECTIN','SELE','IL16','CD40','SELPLG','Prostaglandin','ESAM','VISFATIN','LAIR1',
-                        'SPP1','CDH5','JAM','CD34','SIRP','APRIL','THBS','CD86','BTLA','Cholesterol','ADGRE','TNF',
-                        'PLAU','BAG','TENASCIN','ADGRG','SEMA4','CD23','CD6','PTPRM','GAP','PD-L1','NOTCH','CD46',
-                        'PROS','GAS','MPZ','CADM')
+signaling_pathways <- c("MIF", "MHC-II", "CypA", "CD99", "GALECTIN", "CD45", "BAFF", "CLEC", "CXCL", "APP", "ICAM", 
+                        "FN1", "MHC-I", "PECAM2", "ApoE", "IL16", "ANNEXIN", "Prostaglandin", "LAIR1", "CD40", "SPP1", 
+                        "SIRP", "SELPLG", "APRIL", "NECTIN", "CD86", "CCL", "BTLA", "Cholesterol", "ADGRE", "PLAU", "BAG", 
+                        "TNF", "SEMA4", "CD23", "CD6", "PD-L1", "MPZ", "CADM")
 
 # Open a single PDF file to save all plots
 pdf("/path/chordplots_significantpathways_TLS-likehub.pdf", width = 7, height = 7)
