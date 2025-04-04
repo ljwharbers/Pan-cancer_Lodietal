@@ -34,7 +34,7 @@ reactivity_expansion <- dplyr::left_join(meta_object_expansion, Tcell_reactivity
 reactivity_expansion %>% dplyr::filter(is.na(avg_signature)) # 0
 
 ### Filter frequencies based on annotation and samples (samples with >= 500 samples and only PrimaryTumor&Metastasis)
-sample_list <- readRDS(paste0(dir,"Expansion_sample_list.rds"))
+sample_list <- readRDS(paste0(dir,"SVM_sample_lists_PC2_PC3.rds"))
 samples <- sample_list[["PC2"]]["react_samples"]
 reactivity_expansion %>% dplyr::filter(!SampleID %in% samples$react_samples) # 3 
 
