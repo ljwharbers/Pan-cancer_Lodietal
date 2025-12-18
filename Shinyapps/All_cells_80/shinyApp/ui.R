@@ -22,11 +22,11 @@ msigdbr_list
 #sc1conf[8, fID := sc1conf[8, gsub("IFN", "IFN EC", sc1conf[8, fID])]]
 #sc1conf[8, fID := sc1conf[8, gsub("Stalk cells", "Stalk", sc1conf[8, fID])]]
 
-tcels <- a("T-cells", href="http://apps.lambrechtslab.sites.vib.be/T-cells/")
-bcels <- a("B-cells", href="http://apps.lambrechtslab.sites.vib.be/B-cells")
-mmcels <- a("Myeloid cells", href="http://apps.lambrechtslab.sites.vib.be/Myeloid-cells")
-dc <- a("Dendritic cells (DCs)",href="http://apps.lambrechtslab.sites.vib.be/Dendritic-cells")
-ecels <- a("Endothelial cells (ECs)", href="http://apps.lambrechtslab.sites.vib.be/Endothelial-cells/")
+tcels <- a("T-cells", href="https://ccb-bioit.shinyapps.io/T-cells/")
+bcels <- a("B-cells", href="https://ccb-bioit.shinyapps.io/B-cells/")
+mmcels <- a("Myeloid cells", href="https://ccb-bioit.shinyapps.io//Myeloid-cells")
+dc <- a("Dendritic cells (DCs)",href="https://ccb-bioit.shinyapps.io/Dendritic-cells")
+ecels <- a("Endothelial cells (ECs)", href="https://ccb-bioit.shinyapps.io/Endothelial-cells/")
 
 jumbotron_modified <- function (header, content, button = TRUE, ...)
 {
@@ -64,7 +64,7 @@ shinyUI(fluidPage(
       HTML("Home Page"),
       jumbotron_modified("PanCancer Atlas",content="",button = FALSE),
       hr(),
-      h5("Reference: Lodi et al., Cell Rep Med 2025. DOI: xxxxxx"),
+      h5("Reference: Lodi et al., Cell Rep Med 2025. DOI: https://doi.org/10.1016/j.xcrm.2025.102416"),
       br(),
       h4("Exploring the tumor microenvironment (TME) with single-cell RNA sequencing (scRNAseq)"),
       h5("The TME plays a crucial role in shaping tumor evolution and determining therapy effectiveness. ScRNAseq has revolutionized our understanding of the TME by
